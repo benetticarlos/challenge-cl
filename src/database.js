@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
+import config from './config/config.js';
 
-const URI =
-  proccess.env.MONGODB_URI || 'mongodb://localhost/challenge-cintelink';
+const URI = config.MONGO_DB || 'mongodb://localhost/challenge-cintelink';
 
 mongoose
   .connect(URI)
