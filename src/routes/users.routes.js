@@ -59,7 +59,7 @@ router.post('/signup', async (req, res) => {
       const newUser = new User({ name, email, password });
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
-      // return res.send('You are registered');
+
       console.log(newUser);
       res.redirect('/users/signin');
     }
@@ -74,8 +74,7 @@ router.get('/logout', function (req, res, next) {
     res.redirect('/');
   });
 });
-// res.redirect('/');
-// res.send('Logout');
+
 router.post('/profile/:id', async (req, res) => {
   const id = req.user.id;
   const { subscriptions } = req.body;
@@ -83,9 +82,8 @@ router.post('/profile/:id', async (req, res) => {
     await User.findByIdAndUpdate(id, {
       subscriptions: subscriptions,
     });
-
     addNotifications(req.user);
-    res.send('Updated');
+    res.render('pages/profile', { user: req.user });
   }
 });
 

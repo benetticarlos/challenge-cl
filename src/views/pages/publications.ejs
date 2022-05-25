@@ -37,44 +37,31 @@
     <% publications.forEach(function(publication) { %> 
 <div class="card" style="
     margin-top: 2vh;">
-  <div class="card-header" style="display: flex;
-    flex-direction: row;
-    justify-content: flex-end;">
-    <%= publication.createdAt.toLocaleDateString() %>
-    <%= publication.createdAt.toLocaleTimeString() %>
-    
-  </div>
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+        
+          <div>
+            <h5>to <%= publication.tags %> team</h5>
+          </div>
+          <div class="">
+            <%= publication.createdAt.toLocaleDateString() %>
+              <%= publication.createdAt.toLocaleTimeString() %>
+          </div>
+        </div>
   <div class="card-body">
     <h5 class="card-title"><%= publication.title %></h5>
     <p class="card-text"><%= publication.description %></p>
     
   </div>
 </div>
-
-
     <% }); %>
 
-
-     
-    
    <% } else { %>
     <h1>no existen entradas</h1>
     <% } %>
 
-
-   <!-- <script>
-     const boton = document.getElementById('boton');
-      const checks = document.querySelectorAll('.tags');
-
-      boton.addEventListener('click', function() {
-        checks.forEach((check) => {
-          if (check.checked) {
-            
-          }
-        });
-      });
-
-  </script> -->
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
 
   </body>
   </html>

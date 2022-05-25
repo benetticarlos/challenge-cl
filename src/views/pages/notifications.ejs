@@ -13,55 +13,61 @@
 
   <% if (notifications.length) { %>
     <% notifications.forEach(function(entry) { %>
-      <div class="card" style="
-    margin-top: 2vh;">
-        <div class="card-header" style="display: flex;
-    flex-direction: row;
-    justify-content: flex-end;">
-          <%= entry.date %>
-            <%= entry.hour %>
+      <div class="card" style="margin-top: 5vh;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+
+          <div>
+          <h5>to <%= entry.tags %> team</h5>
         </div>
-        <% if (entry.read) {%> 
-         <div class="card-body">
-           <% } else { %>
-           <div class="card-body" style="background-color: darkgrey;
-    font-weight: bold;">  
-            <% } %>
-              
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= entry.title %>
-          </h5>
-          <p class="card-text">
-            <%= entry.description %>
-          </p>
-
-          <a href="/notifications/edit/<%= entry.id %>">
-          <button type="button" class="btn btn-info">
-            Mark as read
-          </button>
-        </a>
-          <a href="/notifications/delete/<%= entry.id %>">
-
-          <button type="button" class="btn btn-danger">
-            Delete
-          </button>
-          </a>
+        <div class="">
+          <%= entry.createdAt.toLocaleDateString() %>
+          <%= entry.createdAt.toLocaleTimeString() %>
         </div>
       </div>
+        <% if (entry.read) {%>
+          <div class="card-body">
+            <% } else { %>
+              <div class="card-body" style="background-color: darkgrey;
+    font-weight: bold;">
+                <% } %>
+
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <%= entry.title %>
+                    </h5>
+                    <p class="card-text">
+                      <%= entry.description %>
+                    </p>
+
+                    <a href="/notifications/edit/<%= entry.id %>">
+                      <button type="button" class="btn btn-info">
+                        Mark as read
+                      </button>
+                    </a>
+                    <a href="/notifications/delete/<%= entry.id %>">
+
+                      <button type="button" class="btn btn-danger">
+                        Delete
+                      </button>
+                    </a>
+                  </div>
+              </div>
 
 
-      <% }); %>
+              <% }); %>
 
 
 
 
-        <% } else { %>
-          <h1>no existen entradas</h1>
-          <% } %>
+                <% } else { %>
+                  <h1>no existen entradas</h1>
+                  <% } %>
 
-
-
-</body>
+                  
+                  
+                </body>
+                <footer>
+                  <%- include('../partials/footer'); %>
+                </footer>
 
 </html>
