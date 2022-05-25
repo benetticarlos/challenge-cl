@@ -21,6 +21,13 @@
           <%= entry.date %>
             <%= entry.hour %>
         </div>
+        <% if (entry.read) {%> 
+         <div class="card-body">
+           <% } else { %>
+           <div class="card-body" style="background-color: darkgrey;
+    font-weight: bold;">  
+            <% } %>
+              
         <div class="card-body">
           <h5 class="card-title">
             <%= entry.title %>
@@ -29,8 +36,17 @@
             <%= entry.description %>
           </p>
 
-          <button type="button" class="btn btn-info">Mark as read</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <a href="/notifications/edit/<%= entry.id %>">
+          <button type="button" class="btn btn-info">
+            Mark as read
+          </button>
+        </a>
+          <a href="/notifications/delete/<%= entry.id %>">
+
+          <button type="button" class="btn btn-danger">
+            Delete
+          </button>
+          </a>
         </div>
       </div>
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  
+  <h1><%= user.id %> </h1>
+
+
+  <% if (user) { %>
+    <form action="/users/profile/<%= user.id %> " method="post">
+
+      <select class="form-select" aria-label="Default select example" name="subscriptions" id="subscriptions">
+        <option selected>Equipo</option>
+        <option name="subscriptions" value="PM">PM</option>
+        <option name="subscriptions" value="DESARROLLO">DESARROLLO</option>
+        <option name="subscriptions" value="ADMINISTRACION">ADMINISTRACION</option>
+      </select>
+        <button type="submit" class="btn btn-primary" id="boton">Submit</button>
+    </form>
+  <% } %>
+
+
+  <!-- <script>
+       const boton = document.getElementById('boton');
+        const checks = document.querySelectorAll('.tags');
+  
+        boton.addEventListener('click', function() {
+          checks.forEach((check) => {
+            if (check.checked) {
+              
+            }
+          });
+        });
+  
+    </script> -->
+
+  </body>
+  </html>

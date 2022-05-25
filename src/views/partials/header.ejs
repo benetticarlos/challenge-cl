@@ -3,7 +3,7 @@
   <a class="navbar-brand" href="/">HOME</a>
   <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/news">News</a>
+          <a class="nav-link" href="/publications">News</a>
         </li>
 
         <!-- <li class="nav-item">
@@ -18,8 +18,14 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/users/signup">Sign Up</a>
+      
     </li>
     <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/notifications">
+          <box-icon name='bell'></box-icon>
+        </a>
+      </li>
         <li class="nav-item">
           <a class="nav-link" href="/users/logout">Log out</a>
         </li>

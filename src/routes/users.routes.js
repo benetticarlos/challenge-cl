@@ -3,6 +3,7 @@ const router = express.Router();
 import User from '../models/user.js';
 import passport from 'passport';
 import { signin } from '../controllers/users.controller.js';
+import addNotifications from '../helpers/subscriptions.js';
 
 router.get('/signin', (req, res) => {
   res.render('pages/signin');
@@ -75,5 +76,23 @@ router.get('/logout', function (req, res, next) {
 });
 // res.redirect('/');
 // res.send('Logout');
+router.post('/profile/:id', async (req, res) => {
+  const id = req.user.id;
+  const { subscriptions } = req.body;
+  if (id) {
+    await User.findByIdAndUpdate(id, {
+      subscriptions: subscriptions,
+    });
+
+    addNotifications(req.user);
+    res.send('Updated');
+  }
+});
+
+router.get('/profile', async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  res.render('pages/profile', { user });
+});
 
 export default router;

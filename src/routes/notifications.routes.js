@@ -16,14 +16,14 @@ router.post(
   PublicationController.createNotification
 );
 
-router.put(
-  '/:id',
+router.get(
+  '/edit/:id',
   helpers.isAuthenticated,
   PublicationController.updateNotification
 );
 
-router.delete(
-  '/:id',
+router.get(
+  '/delete/:id',
   helpers.isAuthenticated,
   PublicationController.deleteNotification
 );

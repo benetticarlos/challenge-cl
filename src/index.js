@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/api/notifications', notificationsRoutes);
+app.use('/notifications', notificationsRoutes);
 app.use('/users', userRoutes);
 app.use('/publications', publicationsRouter);
 app.post('/', (req, res) => {
@@ -65,13 +65,13 @@ app.post('/', (req, res) => {
 app.get('/', (req, res) => {
   res.render('pages/index');
 });
-app.get('/news', helpers.isAuthenticated, async (req, res) => {
-  const publications = await Publication.find();
-  const user = req.user;
-  console.log('user :>> ', user);
-  console.log('publications :>> ', publications);
-  res.render('pages/publications', { publications });
-});
+// app.get('/news', helpers.isAuthenticated, async (req, res) => {
+//   const publications = await Publication.find();
+//   const user = req.user;
+//   console.log('user :>> ', user);
+//   console.log('publications :>> ', publications);
+//   res.render('pages/publications', { publications });
+// });
 
 // static files
 app.use(express.static(path.join(__dirname + '/public')));

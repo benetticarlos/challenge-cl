@@ -9,12 +9,22 @@ const UserSchema = new Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     admin: { type: Boolean, default: false },
-    subscriptions: [
+    subscriptions: {
+      type: String,
+      default: 'none',
+    },
+    notifications: [
       {
-        type: Schema.Types.ObjectId,
-        ref: 'Tags',
+        id: { type: String },
+        read: { type: Boolean, default: false },
       },
     ],
+    // read: [
+    //   {
+    //     type: Boolean,
+    //     default: false,
+    //   },
+    // ],
   },
   {
     versionKey: false,
