@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import User from '../models/user.js';
 import passport from 'passport';
+import { signin } from '../controllers/users.controller.js';
 
 router.get('/signin', (req, res) => {
   res.render('pages/signin');
@@ -64,7 +65,7 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/logout', function (req, res, next) {
+router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) {
       return next(err);

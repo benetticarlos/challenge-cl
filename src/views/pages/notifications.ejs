@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <% if (notifications.length) { %>
+    <% notifications.forEach(function(entry) { %>
+      <div class="card" style="
+    margin-top: 2vh;">
+        <div class="card-header" style="display: flex;
+    flex-direction: row;
+    justify-content: flex-end;">
+          <%= entry.date %>
+            <%= entry.hour %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= entry.title %>
+          </h5>
+          <p class="card-text">
+            <%= entry.description %>
+          </p>
+
+          <button type="button" class="btn btn-info">Mark as read</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+
+
+      <% }); %>
+
+
+
+
+        <% } else { %>
+          <h1>no existen entradas</h1>
+          <% } %>
+
+
+
+</body>
+
+</html>

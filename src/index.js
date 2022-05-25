@@ -48,6 +48,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 });
 
@@ -61,13 +62,15 @@ app.post('/', (req, res) => {
 // app.get('/', (req, res) => {
 //   res.render('pages/index');
 // });
-app.get('/', helpers.isAuthenticated, async (req, res) => {
-  const notifications = await Publication.find();
-  console.log('notifications :>> ', notifications);
-  res.render('pages/publications', { notifications });
+app.get('/', (req, res) => {
+  res.render('pages/index');
 });
-app.get('/about', (req, res) => {
-  res.render('pages/about');
+app.get('/news', helpers.isAuthenticated, async (req, res) => {
+  const publications = await Publication.find();
+  const user = req.user;
+  console.log('user :>> ', user);
+  console.log('publications :>> ', publications);
+  res.render('pages/publications', { publications });
 });
 
 // static files

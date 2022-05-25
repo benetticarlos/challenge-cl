@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+<div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="card card-body">
+      <h3 class="text-center mb-4">Sign Up</h3>
+
+      <% if (error_msg) { %> 
+      <% for(var i=0; i<error_msg.length; i++) {%>
+        
+        
+        
+        <div class="alert alert-danger">
+          <%= error_msg[i] %>
+        </div>
+        <% } %>
+      <% } %>
+
+      <form action="/users/signup" method="post">
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+
+          <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+
+          <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+
+          <input type="password" class="form-control" name="confirm_password" id="confirm_password"
+            placeholder="confirm password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+            <p class="text-center">
+              <a href="/users/signin">you have an account?</a>
+            </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -6,7 +6,6 @@ import helpers from '../helpers/auth.js';
 
 router.get('/', helpers.isAuthenticated, async (req, res) => {
   const notifications = await Publication.find();
-  console.log('notifications :>> ', notifications);
   res.render('pages/publications', { notifications });
 });
 

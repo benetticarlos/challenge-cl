@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <% if (user.admin === true) { %> 
+    <div>
+      <h1>Hola admin!</h1>
+    </div>
+  <% } %>
+
+
+  <% if (publications.length) { %>
+    <% publications.forEach(function(publication) { %> 
+<div class="card" style="
+    margin-top: 2vh;">
+  <div class="card-header" style="display: flex;
+    flex-direction: row;
+    justify-content: flex-end;">
+    <%= publication.createdAt.toLocaleDateString() %>
+    <%= publication.createdAt.toLocaleTimeString() %>
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= publication.title %></h5>
+    <p class="card-text"><%= publication.description %></p>
+    
+  </div>
+</div>
+
+
+    <% }); %>
+
+
+     
+    
+   <% } else { %>
+    <h1>no existen entradas</h1>
+    <% } %>
+
+
+
+  </body>
+  </html>
