@@ -14,11 +14,13 @@ https://cl-challenge.herokuapp.com/
 Para instalar de manera local el repositorio es necesario contar con
 
  - Node.JS
+ - Gestor de paquetes NPM
  - MongoDB
 
 Una vez clonado;
 
     npm install
+    npm start
    
 ## .env
 Crear un archivo **.env** donde almacenar las variables de entorno siguiendo el archivo **.env.template**
