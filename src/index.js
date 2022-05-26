@@ -37,10 +37,12 @@ app.use(express.json());
 app.use(
   session({
     secret: config.SECRET_SESSION,
+    cookie: { maxAge: 60000 },
     resave: true,
     saveUninitialized: true,
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
