@@ -25,6 +25,7 @@ const app = express();
 addAdmin();
 
 // settings
+app.set('trust proxy', 1);
 app.set('port', config.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
