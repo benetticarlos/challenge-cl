@@ -6,75 +6,54 @@
 </head>
 
 <body class="container">
-
   <header>
     <%- include('../partials/header'); %>
   </header>
-
-
-
-  <% if (user.admin === true) { %> 
-<form action="/publications" method="post">
-  <div class="mb-3">
-    <input class="form-control" name="title" id="title" placeholder="tittle">
-  </div>
-  <div class="input-group">
-    <textarea class="form-control" aria-label="With textarea" id="description" name="description" placeholder="description"></textarea>
-  </div>
-<select class="form-select" aria-label="Default select example" name="tags" id="tags">
-  <option selected>Open this select menu</option>
-  <option name="tags" value="PM">PM</option>
-  <option name="tags" value="DESARROLLO">DESARROLLO</option>
-  <option name="tags" value="ADMINISTRACION">ADMINISTRACION</option>
-</select>
-
-  <button type="submit" class="btn btn-primary" id="boton">Submit</button>
-</form>
-  <% } %>
-
-
-  <% if (publications.length) { %>
-    <% publications.forEach(function(publication) { %> 
-<div class="card" style="
-    margin-top: 2vh;">
-  <div class="card-header" style="display: flex;
-    flex-direction: row;
-    justify-content: flex-end;">
-    <%= publication.createdAt.toLocaleDateString() %>
-    <%= publication.createdAt.toLocaleTimeString() %>
-    
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= publication.title %></h5>
-    <p class="card-text"><%= publication.description %></p>
-    
-  </div>
-</div>
-
-
-    <% }); %>
-
-
-     
-    
-   <% } else { %>
-    <h1>no existen entradas</h1>
+  <% if (user.admin===true) { %>
+    <form action="/publications" method="post">
+      <div class="mb-3">
+        <input class="form-control" name="title" id="title" placeholder="tittle">
+      </div>
+      <div class="input-group">
+        <textarea class="form-control" aria-label="With textarea" id="description" name="description"
+          placeholder="description"></textarea>
+      </div>
+      <select class="form-select" aria-label="Default select example" name="tags" id="tags">
+        <option selected>select team</option>
+        <option name="tags" value="PM">PM</option>
+        <option name="tags" value="development">development</option>
+        <option name="tags" value="management">management</option>
+      </select>
+      <button type="submit" class="btn btn-primary" id="boton">Submit</button>
+    </form>
     <% } %>
-
-
-   <!-- <script>
-     const boton = document.getElementById('boton');
-      const checks = document.querySelectorAll('.tags');
-
-      boton.addEventListener('click', function() {
-        checks.forEach((check) => {
-          if (check.checked) {
-            
-          }
-        });
-      });
-
-  </script> -->
-
-  </body>
-  </html>
+      <% if (publications.length) { %>
+        <% publications.forEach(function(publication) { %>
+          <div class="card" style="margin-top: 2vh;">
+            <div class="card-header" style="display: flex; justify-content: space-between;">
+              <div>
+                <h5>to <%= publication.tags %> team</h5>
+              </div>
+              <div class="">
+                <%= publication.createdAt.toLocaleDateString() %>
+                  <%= publication.createdAt.toLocaleTimeString() %>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= publication.title %>
+              </h5>
+              <p class="card-text">
+                <%= publication.description %>
+              </p>
+            </div>
+          </div>
+          <% }); %>
+            <% } else { %>
+              <h1>no existen entradas</h1>
+              <% } %>
+                <footer>
+                  <%- include('../partials/footer'); %>
+                </footer>
+</body>
+</html>

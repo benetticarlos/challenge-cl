@@ -12,7 +12,6 @@ const addAdmin = async () => {
       });
       newUser.password = await newUser.encryptPassword(config.ADMIN_PASSWORD);
       await newUser.save();
-      console.log('user created :>> ', newUser);
     }
   }
 };

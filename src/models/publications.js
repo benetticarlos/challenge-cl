@@ -6,18 +6,10 @@ const PublicationSchema = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
-    // read: { type: Boolean, default: false },
-    tags:
-      // {
-      //   type: Schema.Types.ObjectId,
-      //   ref: 'Tags',
-      // },
-      {
-        type: String,
-        default: 'everybody',
-      },
-
-    // users: [{}],
+    tags: {
+      type: String,
+      default: 'everybody',
+    },
   },
   {
     timestamps: true,
