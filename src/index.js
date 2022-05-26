@@ -64,5 +64,5 @@ app.use(express.static(path.join(__dirname + '/public')));
 
 // start server
 app.listen(app.get('port'), () =>
-  console.log(`Example app listening on port ${app.get('port')}!`)
+  console.log(`App listening on port ${app.get('port')}!`)
 );

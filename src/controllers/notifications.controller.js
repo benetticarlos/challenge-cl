@@ -1,7 +1,9 @@
 import publications from '../models/publications.js';
 import User from '../models/user.js';
+import addNotifications from '../helpers/subscriptions.js';
 
 export const getNotifications = async (req, res) => {
+  // await addNotifications(req.user);
   const notificationsObj = req.user.notifications;
   const notificationsId = notificationsObj.map(
     (notification) => notification.id
@@ -10,9 +12,7 @@ export const getNotifications = async (req, res) => {
   const notifications = await publications.find({
     _id: { $in: notificationsId },
   });
-  console.log('notificationsObj :>> ', notificationsObj);
-  console.log('notificationsId :>> ', notificationsId);
-  console.log('notifications :>> ', notifications);
+
   for (let i = 0; i < notificationsObj.length; i++) {
     const element = notificationsObj[i];
 
@@ -20,6 +20,7 @@ export const getNotifications = async (req, res) => {
   }
 
   const notificationsRev = notifications.slice().reverse();
+
   res.render('pages/notifications', { notifications: notificationsRev });
 };
 

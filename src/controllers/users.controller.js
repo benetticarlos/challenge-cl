@@ -12,8 +12,6 @@ export const signUnForm = async (req, res) => {
   const errors = [];
   const { name, email, password, confirm_password } = req.body;
 
-  console.log('req.body :>> ', req.body);
-
   if (name.length <= 0) {
     errors.push({ text: 'Please write your name' });
   }
@@ -46,7 +44,6 @@ export const signUnForm = async (req, res) => {
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
 
-      console.log(newUser);
       res.redirect('/users/signin');
     }
   }
