@@ -2,7 +2,6 @@ import User from '../models/user.js';
 import Publication from '../models/publications.js';
 
 const addNotifications = async (user) => {
-  // const user = req.user;
   const notifications = await Publication.find({ tags: user.subscriptions });
   const notificationsID = notifications.map((notification) => {
     return { id: notification._id };

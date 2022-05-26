@@ -1,19 +1,21 @@
 import express from 'express';
+import session from 'express-session';
 import path from 'path';
 import morgan from 'morgan';
-import notificationsRoutes from './routes/notifications.routes.js';
-import userRoutes from './routes/users.routes.js';
 import { fileURLToPath } from 'url';
-import session from 'express-session';
-import mongoose from './database.js';
 import passport from 'passport';
 import flash from 'connect-flash';
-import './config/passport.js';
-import helpers from './helpers/auth.js';
-import publicationsRouter from './routes/publications.routes.js';
-import Publication from './models/publications.js';
+
+import indexRoutes from './routes/index.routes.js';
+import notificationsRoutes from './routes/notifications.routes.js';
+import userRoutes from './routes/users.routes.js';
+import publicationsRoutes from './routes/publications.routes.js';
+
 import addAdmin from './helpers/addAdmin.js';
 import config from './config/config.js';
+
+import mongoose from './database.js';
+import './config/passport.js';
 
 const __filename = path.resolve(fileURLToPath(import.meta.url));
 const __dirname = path.dirname(__filename);
@@ -31,7 +33,6 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// app.use(methodOverride('_method'));
 app.use(
   session({
     secret: config.SECRET_SESSION,
@@ -53,30 +54,15 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.use('/', indexRoutes);
 app.use('/notifications', notificationsRoutes);
 app.use('/users', userRoutes);
-app.use('/publications', publicationsRouter);
-app.post('/', (req, res) => {
-  res.send('GET request to the homepage');
-});
-// app.get('/', (req, res) => {
-//   res.render('pages/index');
-// });
-app.get('/', (req, res) => {
-  res.render('pages/index');
-});
-// app.get('/news', helpers.isAuthenticated, async (req, res) => {
-//   const publications = await Publication.find();
-//   const user = req.user;
-//   console.log('user :>> ', user);
-//   console.log('publications :>> ', publications);
-//   res.render('pages/publications', { publications });
-// });
+app.use('/publications', publicationsRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname + '/public')));
-// start server
 
+// start server
 app.listen(app.get('port'), () =>
   console.log(`Example app listening on port ${app.get('port')}!`)
 );

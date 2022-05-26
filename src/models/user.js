@@ -19,12 +19,6 @@ const UserSchema = new Schema(
         read: { type: Boolean, default: false },
       },
     ],
-    // read: [
-    //   {
-    //     type: Boolean,
-    //     default: false,
-    //   },
-    // ],
   },
   {
     versionKey: false,
