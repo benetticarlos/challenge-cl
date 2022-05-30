@@ -1,13 +1,12 @@
 import express from 'express';
 const router = express.Router();
-import helpers from '../helpers/auth.js';
+import isAuthenticated from '../helpers/auth.js';
 import passport from 'passport';
 import {
   getSigninView,
-  getSignUnView,
-  signUnForm,
+  getSignUpView,
+  signUpForm,
   logOut,
-  editProfile,
   profileView,
 } from '../controllers/users.controller.js';
 
@@ -22,14 +21,12 @@ router.post(
   })
 );
 
-router.get('/signup', getSignUnView);
+router.get('/signup', getSignUpView);
 
-router.post('/signup', signUnForm);
+router.post('/signup', signUpForm);
 
-router.get('/logout', helpers.isAuthenticated, logOut);
+router.get('/logout', isAuthenticated, logOut);
 
-router.post('/profile/:id', helpers.isAuthenticated, editProfile);
-
-router.get('/profile', helpers.isAuthenticated, profileView);
+router.get('/profile', isAuthenticated, profileView);
 
 export default router;
