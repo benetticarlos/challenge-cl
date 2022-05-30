@@ -24,7 +24,7 @@
         </h1>
         <h5>Pleas select your team</h5>
       </div>
-      <form action="/users/profile/<%= user.id %> " method="post">
+      <form id="profileForm">
         <select class="form-select" aria-label="Default select example" name="subscriptions" id="subscriptions">
           <option selected>team</option>
           <option name="subscriptions" value="PM">PM</option>
@@ -38,5 +38,7 @@
       <footer>
         <%- include('../partials/footer'); %>
       </footer>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/scripts/profileScripts.js"></script>
 </body>
 </html>

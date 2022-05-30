@@ -2,9 +2,34 @@ import publications from '../models/publications.js';
 import User from '../models/user.js';
 import addNotifications from '../helpers/subscriptions.js';
 
+export const renderNotifications = async (req, res, next) => {
+  // const notificationsObj = req.user.notifications;
+  // const notificationsId = notificationsObj.map(
+  //   (notification) => notification.id
+  // );
+
+  // const notifications = await publications.find({
+  //   _id: { $in: notificationsId },
+  // });
+
+  // for (let i = 0; i < notificationsObj.length; i++) {
+  //   const element = notificationsObj[i];
+
+  //   notifications[i].read = element.read;
+  // }
+
+  // const notificationsRev = notifications.slice().reverse();
+  // console.log(req.user);
+  res.render(
+    'pages/notifications'
+    // , { notifications: notificationsRev }
+    // { user: req.user }
+  );
+  return next();
+};
+
 export const getNotifications = async (req, res) => {
-  // await addNotifications(req.user);
-  const notificationsObj = req.user.notifications;
+  const notificationsObj = await req.user.notifications;
   const notificationsId = notificationsObj.map(
     (notification) => notification.id
   );
@@ -21,7 +46,7 @@ export const getNotifications = async (req, res) => {
 
   const notificationsRev = notifications.slice().reverse();
 
-  res.render('pages/notifications', { notifications: notificationsRev });
+  return notificationsRev;
 };
 
 export const updateNotification = async (req, res) => {

@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import helpers from '../helpers/auth.js';
+import isAuthenticated from '../helpers/auth.js';
 import passport from 'passport';
 import {
   getSigninView,
@@ -26,10 +26,10 @@ router.get('/signup', getSignUnView);
 
 router.post('/signup', signUnForm);
 
-router.get('/logout', helpers.isAuthenticated, logOut);
+router.get('/logout', isAuthenticated, logOut);
 
-router.post('/profile/:id', helpers.isAuthenticated, editProfile);
+router.post('/profile/:id', isAuthenticated, editProfile);
 
-router.get('/profile', helpers.isAuthenticated, profileView);
+router.get('/profile', isAuthenticated, profileView);
 
 export default router;

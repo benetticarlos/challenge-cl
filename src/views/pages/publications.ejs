@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
 
-<head>
-  <%- include('../partials/head'); %>
-</head>
-
-<body class="container">
-  <header>
-    <%- include('../partials/header'); %>
-  </header>
-  <% if (user.admin===true) { %>
-    <form action="/publications" method="post">
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+    <% if (user.admin===true) { %>
+    <form id="publicForm">
       <div class="mb-3">
-        <input class="form-control" name="title" id="title" placeholder="tittle">
+        <input
+          class="form-control"
+          name="title"
+          id="title"
+          placeholder="tittle"
+        />
       </div>
       <div class="input-group">
-        <textarea class="form-control" aria-label="With textarea" id="description" name="description"
-          placeholder="description"></textarea>
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          id="description"
+          name="description"
+          placeholder="description"
+        ></textarea>
       </div>
-      <select class="form-select" aria-label="Default select example" name="tags" id="tags">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="tags"
+        id="tags"
+      >
         <option selected>select team</option>
         <option name="tags" value="PM">PM</option>
         <option name="tags" value="development">development</option>
@@ -27,33 +40,14 @@
       <button type="submit" class="btn btn-primary" id="boton">Submit</button>
     </form>
     <% } %>
-      <% if (publications.length) { %>
-        <% publications.forEach(function(publication) { %>
-          <div class="card" style="margin-top: 2vh;">
-            <div class="card-header" style="display: flex; justify-content: space-between;">
-              <div>
-                <h5>to <%= publication.tags %> team</h5>
-              </div>
-              <div class="">
-                <%= publication.createdAt.toLocaleDateString() %>
-                  <%= publication.createdAt.toLocaleTimeString() %>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">
-                <%= publication.title %>
-              </h5>
-              <p class="card-text">
-                <%= publication.description %>
-              </p>
-            </div>
-          </div>
-          <% }); %>
-            <% } else { %>
-              <h1>no existen entradas</h1>
-              <% } %>
-                <footer>
-                  <%- include('../partials/footer'); %>
-                </footer>
-</body>
+    <div class="card" style="margin-top: 2vh; background: transparent; border: none" id="pubContainer">
+    </div>
+
+    <footer><%- include('../partials/footer'); %></footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/publicationsScripts.js" type="module" >
+      
+    </script>
+  </body>
 </html>
