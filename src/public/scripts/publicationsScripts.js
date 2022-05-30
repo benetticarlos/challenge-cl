@@ -4,17 +4,18 @@ const publicForm = document.querySelector('#publicForm');
 const title = document.querySelector('#title');
 const description = document.querySelector('#description');
 const tags = document.querySelector('#tags');
-publicForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  console.log('title :>> ', title.value, description.value, tags.value);
-  socket.emit('client:newpublication', {
-    title: title.value,
-    description: description.value,
-    tags: tags.value,
+if (publicForm) {
+  publicForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    socket.emit('client:newpublication', {
+      title: title.value,
+      description: description.value,
+      tags: tags.value,
+    });
+    socket.emit('client:notifications', { message: 'send' });
   });
-});
+}
 socket.on('server:publications', (publications) => {
-  console.log(publications);
   publications.forEach((publication) => {
     pubContainer.innerHTML += `
     <div class= "card" style = "margin-top: 2vh;" >

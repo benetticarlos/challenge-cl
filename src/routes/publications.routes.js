@@ -5,6 +5,4 @@ import isAuthenticated from '../helpers/auth.js';
 
 router.get('/', isAuthenticated, PublicationController.getPublications);
 
-router.post('/', isAuthenticated, PublicationController.createPublication);
-
 export default router;

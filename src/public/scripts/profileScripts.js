@@ -7,6 +7,4 @@ profileForm.addEventListener('submit', (e) => {
   socket.emit('client:profileTeam', {
     subscriptions: subscriptions.value,
   });
-
-  // socket.emit('client:notifications', { message: 'send' });
 });

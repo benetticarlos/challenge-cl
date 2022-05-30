@@ -1,14 +1,13 @@
 import User from '../models/user.js';
-import addNotifications from '../helpers/subscriptions.js';
 
 export const getSigninView = (req, res) => {
   res.render('pages/signin');
 };
-export const getSignUnView = (req, res) => {
+export const getSignUpView = (req, res) => {
   res.render('pages/signup');
 };
 
-export const signUnForm = async (req, res) => {
+export const signUpForm = async (req, res) => {
   const errors = [];
   const { name, email, password, confirm_password } = req.body;
 
@@ -64,18 +63,6 @@ export const profileView = async (req, res) => {
   res.render('pages/profile', { user });
 };
 
-export const editProfile = async (req, res) => {
-  const id = req.user.id;
-  const { subscriptions } = req.body;
-  if (id) {
-    await User.findByIdAndUpdate(id, {
-      subscriptions: subscriptions,
-    });
-    addNotifications(req.user);
-    res.render('pages/profile', { user: req.user });
-  }
-};
-
-export const getUsers = async (req, res) => {
-  res.render('pages/signin');
-};
+// export const getUsers = async (req, res) => {
+//   res.render('pages/signin');
+// };

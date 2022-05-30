@@ -6,9 +6,7 @@ socket.on('connect', () => {
 });
 
 socket.on('server:notifications', (notifications) => {
-  console.log('notifications :>> ', notifications);
   notifications.forEach((notification) => {
-    console.log('notification ID:>> ', notification._id);
     let divRead = '';
     if (notification.read) {
       divRead = '';

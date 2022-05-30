@@ -3,12 +3,7 @@ const router = express.Router();
 import * as NotificationControllers from '../controllers/notifications.controller.js';
 import isAuthenticated from '../helpers/auth.js';
 
-router.get(
-  '/',
-  isAuthenticated,
-  NotificationControllers.renderNotifications,
-  NotificationControllers.getNotifications
-);
+router.get('/', isAuthenticated, NotificationControllers.renderNotifications);
 
 router.get(
   '/edit/:id',
