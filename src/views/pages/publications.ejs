@@ -9,63 +9,75 @@
     <header><%- include('../partials/header'); %></header>
     <% if (user.admin===true) { %>
 
+    <div
+      style="
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2vh auto;
+      "
+    >
+      <form id="publicForm">
+        <!-- title input -->
+        <div class="form-outline mb-4">
+          <input
+            class="form-control"
+            name="title"
+            id="title"
+            placeholder="tittle"
+          />
+        </div>
 
-<div style="
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2vh auto;
-">
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <textarea
+            class="form-control"
+            aria-label="With textarea"
+            id="description"
+            name="description"
+            placeholder="description"
+          ></textarea>
+          <!-- <label class="form-label" for="form1Example2">Password</label> -->
+        </div>
 
-  <form id="publicForm">
-    <!-- title input -->
-    <div class="form-outline mb-4">
-      <input class="form-control"
-      name="title"
-      id="title"
-      placeholder="tittle" />
-    </div>
-    
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <textarea class="form-control" aria-label="With textarea" id="description" name="description"
-      placeholder="description"></textarea>
-      <!-- <label class="form-label" for="form1Example2">Password</label> -->
-    </div>
-    
-    <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
-      <div class="col d-flex justify-content-center">
-        <!-- select -->
-        <div>
-          <select class="form-select" aria-label="Default select example" name="tags" id="tags">
-            <optgroup label="select team">
-
-
-              <option name="tags" value="PM">PM</option>
-              <option name="tags" value="development">development</option>
-              <option name="tags" value="management">management</option>
-            </optgroup>
-                    </select>
-                  </div>
-                </div>
-                
-              </div>
-              
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block" id="boton">Enviar</button>
-            </form>
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <!-- select -->
+            <div>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="tags"
+                id="tags"
+              >
+                <optgroup label="select team">
+                  <option name="tags" value="PM">PM</option>
+                  <option name="tags" value="development">development</option>
+                  <option name="tags" value="management">management</option>
+                </optgroup>
+              </select>
+            </div>
           </div>
-    <% } %>
-    <div class="card" style="margin-top: 2vh; background: transparent; border: none" id="pubContainer">
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block" id="boton">
+          Enviar
+        </button>
+      </form>
     </div>
+    <% } %>
+    <div
+      class="card"
+      style="margin-top: 2vh; background: transparent; border: none"
+      id="pubContainer"
+    ></div>
 
     <footer><%- include('../partials/footer'); %></footer>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/scripts/publicationsScripts.js" type="module" >
-      
-    </script>
+    <script src="/scripts/publicationsScripts.js" type="module"></script>
   </body>
 </html>

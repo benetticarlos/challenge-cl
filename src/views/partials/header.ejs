@@ -1,14 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light"
+  style="
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-">
-  <div class="col-sm-4" style="
-    display: flex;
-        justify-content: space-between
-">
-
+  "
+>
+  <div class="col-sm-4" style="display: flex; justify-content: space-between">
     <a class="navbar-brand" href="/">HOME</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -17,30 +16,30 @@
     </ul>
   </div>
   <div class="col-sm-4">
-
-    <ul class="navbar-nav ml-auto" style="    flex-direction: row;     justify-content: space-between">
-      
-    <% if (!user) { %>
-    <li class="nav-item">
-      <a class="nav-link" href="/users/signin">Log In</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/users/signup">Sign Up</a>
-    </li>
-    <% } else { %>
-    <li class="nav-item">
-      <a class="nav-link" href="/notifications">
-        <box-icon name="bell"></box-icon>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/users/profile">profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/users/logout">Log out</a>
-    </li>
-    <% } %>
-  </ul>
-    </div>
-
+    <ul
+      class="navbar-nav ml-auto"
+      style="flex-direction: row; justify-content: space-between"
+    >
+      <% if (!user) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/signin">Log In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/signup">Sign Up</a>
+      </li>
+      <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/notifications">
+          <box-icon name="bell"></box-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/profile">profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/logout">Log out</a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
 </nav>
