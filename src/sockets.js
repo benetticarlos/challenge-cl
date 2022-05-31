@@ -18,10 +18,13 @@ export default (io) => {
         title: data.title,
         description: data.description,
         tags: data.tags,
+        dateDay: new Date().toLocaleDateString(),
+        dateTime: new Date().toLocaleTimeString(),
       });
       const savedNotif = await newNotification.save();
 
       // Send to all users
+      console.log('savedNotif :>> ', savedNotif);
       socket.emit('server:newpublication', savedNotif);
 
       // Send to users subscribed to the tags

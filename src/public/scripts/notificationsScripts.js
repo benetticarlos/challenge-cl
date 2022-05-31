@@ -20,8 +20,8 @@ socket.on('server:notifications', (notifications) => {
                       <h5>to ${notification.tags} team</h5>
                     </div>
                     <div class="">
-                      ${notification.createdAt}
-                      ${notification.createdAt}
+                      ${notification.dateDay}
+                      ${notification.dateTime}
                     </div>
                   </div>
                   <div class="card-body" style=${divRead}>

@@ -13,6 +13,9 @@ if (publicForm) {
       tags: tags.value,
     });
     socket.emit('client:notifications', { message: 'send' });
+    title.value = '';
+    description.value = '';
+    tags.value = '';
   });
 }
 socket.on('server:publications', (publications) => {
@@ -24,8 +27,8 @@ socket.on('server:publications', (publications) => {
           <h5>to ${publication.tags} team</h5>
         </div>
         <div class="">
-          ${publication.createdAt}
-          ${publication.createdAt}
+          ${publication.dateDay}
+          ${publication.dateTime}
         </div>
       </div>
       <div class="card-body">
