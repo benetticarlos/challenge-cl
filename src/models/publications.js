@@ -10,7 +10,16 @@ const PublicationSchema = new Schema(
       type: String,
       default: 'everybody',
     },
+    dateDay: {
+      type: String,
+      default: date.toLocaleDateString(),
+    },
+    dateTime: {
+      type: String,
+      default: date.toLocaleTimeString(),
+    },
   },
+
   {
     timestamps: true,
   }
