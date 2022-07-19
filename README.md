@@ -1,7 +1,7 @@
 
-# App challenge
+# App team management
 
-Esta es una aplicación basada en un test, la cual permite a un administrador subir publicaciones para que todo su equipo lo vea, con ciertos *Tags* para que las personas de diferentes equipos reciban una notificación.
+Esta es una aplicación que permite a un administrador subir publicaciones para que todo su equipo lo vea, con ciertos *Tags* para que las personas de diferentes equipos reciban una notificación.
 La aplicación se basa en conceptos de **Node.js**, usando **MongoDB** como base de datos y el motor de plantillas **EJS** para generar las vistas.
 
 El enlace de la demo en vivo es:
